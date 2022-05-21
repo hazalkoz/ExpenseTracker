@@ -14,10 +14,12 @@ function Expenses(props){
         <div>
             <Card className={'expenses'}>
                 <ExpensesFilter selectedYear={year} onChangeYear={setSelectedYear}/>
-                <ExpenseItem title={props.expense_list[0].title} amount ={props.expense_list[0].amount} date = {props.expense_list[0].date} />
-                <ExpenseItem title={props.expense_list[1].title} amount ={props.expense_list[1].amount} date = {props.expense_list[1].date} />
-                <ExpenseItem title={props.expense_list[2].title} amount ={props.expense_list[2].amount} date = {props.expense_list[2].date} />
-                <ExpenseItem title={props.expense_list[3].title} amount ={props.expense_list[3].amount} date = {props.expense_list[3].date} />
+                {props.expense_list.map(expense=>(
+                    <ExpenseItem
+                        key={expense.id}
+                        title={expense.title}
+                        amount ={expense.amount}
+                        date ={expense.date}/>))}
             </Card>
         </div>
     )
